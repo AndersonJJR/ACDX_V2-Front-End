@@ -23,9 +23,9 @@ export class SignupPage {
   protected readonly serverMessage = signal('');
 
   protected readonly form = this.fb.group({
-    nome: ['', [Validators.required, Validators.minLength(3)]],
+    username: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
-    senha: ['', [Validators.required, Validators.minLength(6)]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
   protected togglePassword(): void {
@@ -47,12 +47,13 @@ export class SignupPage {
         next: (response) => {
           this.serverMessage.set(`Usuário ${response.nome} cadastrado com sucesso.`);
           this.form.reset({
-            nome: '',
+            username: '',
             email: '',
-            senha: '',
+            password: '',
           });
         },
-        error: () => {
+        error: (err) => {
+          console.log('Erro no cadastro: ', err)
           this.serverMessage.set('Não foi possível concluir o cadastro.');
         },
       });

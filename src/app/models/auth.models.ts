@@ -11,9 +11,9 @@ export interface LoginResponse {
 }
 
 export interface SignupRequest {
-  nome: string;
+  username: string;
   email: string;
-  senha: string;
+  password: string;
 }
 
 export interface SignupResponse {

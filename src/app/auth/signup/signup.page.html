@@ -16,26 +16,16 @@
     <form class="signup-form" [formGroup]="form" (ngSubmit)="submit()">
       <label class="input-group">
         <span class="input-icon">👤</span>
-        <input
-          type="text"
-          formControlName="nome"
-          placeholder="Nome"
-          autocomplete="name"
-        />
+        <input type="text" formControlName="username" placeholder="Nome" autocomplete="name" />
       </label>
 
-      <small class="error" *ngIf="form.controls.nome.touched && form.controls.nome.invalid">
+      <small class="error" *ngIf="form.controls.username.touched && form.controls.username.invalid">
         Informe um nome com pelo menos 3 caracteres.
       </small>
 
       <label class="input-group">
         <span class="input-icon">✉️</span>
-        <input
-          type="email"
-          formControlName="email"
-          placeholder="Email"
-          autocomplete="email"
-        />
+        <input type="email" formControlName="email" placeholder="Email" autocomplete="email" />
       </label>
 
       <small class="error" *ngIf="form.controls.email.touched && form.controls.email.invalid">
@@ -44,21 +34,14 @@
 
       <label class="input-group">
         <span class="input-icon">🔒</span>
-        <input
-          [type]="showPassword() ? 'text' : 'password'"
-          formControlName="senha"
-          placeholder="Senha"
-          autocomplete="new-password"
-        />
-        <button
-          type="button"
-          class="ghost-button"
-          (click)="togglePassword()">
+        <input [type]="showPassword() ? 'text' : 'password'" formControlName="password" placeholder="Senha"
+          autocomplete="new-password" />
+        <button type="button" class="ghost-button" (click)="togglePassword()">
           {{ showPassword() ? 'Ocultar' : 'Mostrar' }}
         </button>
       </label>
 
-      <small class="error" *ngIf="form.controls.senha.touched && form.controls.senha.invalid">
+      <small class="error" *ngIf="form.controls.password.touched && form.controls.password.invalid">
         A senha deve ter ao menos 6 caracteres.
       </small>
 
