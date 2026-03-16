@@ -1,0 +1,126 @@
+<!-- src/app/features/home/home.page.html -->
+<section class="home-page" *ngIf="vm$ | async as vm">
+  <section class="hero card">
+    <div class="hero-copy">
+      <span class="eyebrow">ACDX Systems &amp; Management</span>
+      <h1>{{ vm.heroTitle }}</h1>
+      <p>{{ vm.heroSubtitle }}</p>
+
+      <div class="hero-actions">
+        <a routerLink="/products" class="primary-btn">Explorar produtos</a>
+        <a routerLink="/sales-dashboard" class="secondary-btn">Ver dashboards</a>
+      </div>
+
+      <div class="partner-strip">
+        <span *ngFor="let logo of vm.partnerLogos">{{ logo }}</span>
+      </div>
+    </div>
+
+    <div class="hero-panel">
+      <div class="mini-widget">
+        <span class="widget-label">Resumo executivo</span>
+        <strong>Performance operacional em alta</strong>
+        <p>Monitoramento unificado para times comercial, financeiro e serviços.</p>
+      </div>
+
+      <div class="kpis">
+        <article class="kpi-card" *ngFor="let item of vm.kpis">
+          <span>{{ item.label }}</span>
+          <strong>{{ item.value }}</strong>
+          <small>{{ item.detail }}</small>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-block">
+    <div class="section-head">
+      <span class="eyebrow">Destaques</span>
+      <h2>Uma base pensada para operação real</h2>
+      <p>Seções organizadas para apresentar valor de negócio, credibilidade e próximos caminhos da plataforma.</p>
+    </div>
+
+    <div class="feature-grid">
+      <article class="feature-card" *ngFor="let feature of vm.highlights">
+        <span class="tag">{{ feature.tag }}</span>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="content-block two-columns">
+    <div>
+      <div class="section-head left">
+        <span class="eyebrow">Produtos</span>
+        <h2>Prévia do portfólio comercial</h2>
+      </div>
+
+      <div class="link-card-grid">
+        <a class="link-card" *ngFor="let item of vm.productCards" [routerLink]="item.link">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+          <span>Acessar módulo</span>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-head left">
+        <span class="eyebrow">Serviços</span>
+        <h2>Operação e entrega</h2>
+      </div>
+
+      <div class="link-card-grid">
+        <a class="link-card" *ngFor="let item of vm.serviceCards" [routerLink]="item.link">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+          <span>Acessar módulo</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-block">
+    <div class="section-head">
+      <span class="eyebrow">Depoimentos</span>
+      <h2>Empresas que poderiam usar uma solução como esta</h2>
+    </div>
+
+    <div class="testimonial-grid">
+      <article class="testimonial-card" *ngFor="let testimonial of vm.testimonials">
+        <p>"{{ testimonial.quote }}"</p>
+        <strong>{{ testimonial.name }}</strong>
+        <span>{{ testimonial.role }} · {{ testimonial.company }}</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="content-block faq-block">
+    <div class="section-head left">
+      <span class="eyebrow">FAQ</span>
+      <h2>Perguntas frequentes</h2>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item" *ngFor="let faq of vm.faqs">
+        <summary>{{ faq.question }}</summary>
+        <p>{{ faq.answer }}</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="cta card">
+    <div>
+      <span class="eyebrow">Próximo passo</span>
+      <h2>{{ vm.ctaTitle }}</h2>
+      <p>{{ vm.ctaText }}</p>
+    </div>
+
+    <div class="cta-actions">
+      <a routerLink="/services" class="primary-btn">Conhecer serviços</a>
+      <a routerLink="/investments" class="secondary-btn">Área de investimentos</a>
+    </div>
+  </section>
+</section>
+

@@ -1,0 +1,62 @@
+<!-- src/app/features/products/products.page.html -->
+<section class="products-page">
+    <section class="products-hero">
+        <div class="hero-copy">
+            <span class="eyebrow">Catálogo</span>
+            <h1>Seus produtos em uma visão simples e organizada</h1>
+            <p>
+                Gerencie a vitrine do seu negócio com separação por categoria, leitura rápida
+                dos itens e base pronta para consultas detalhadas no futuro.
+            </p>
+        </div>
+    </section>
+
+    <section class="products-board">
+        <header class="products-header">
+            <div class="brand-area">
+                <div class="brand-mark">X</div>
+                <div>
+                    <h2>ACDX Produtos</h2>
+                    <p>Catálogo operacional do microempreendedor</p>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <button type="button" class="new-product-button" (click)="goToNewProduct()">
+                    Novo produto
+                </button>
+            </div>
+        </header>
+
+        <div class="category-bar">
+            <button type="button" *ngFor="let category of categories()" class="category-button"
+                [class.active]="selectedCategoryId() === category.id" (click)="selectCategory(category.id)">
+                {{ category.name }}
+            </button>
+        </div>
+
+        <section class="products-grid">
+            <article class="product-card" *ngFor="let product of filteredProducts()" (click)="openProduct(product)">
+
+                <div class="product-image-area">
+                    <ng-container *ngIf="hasProductImage(product); else placeholderImage">
+                        <img [src]="getProductImageUrl(product)" [alt]="product.name" />
+                    </ng-container>
+
+                    <ng-template #placeholderImage>
+                        <div class="image-placeholder">
+                            <span>Imagem do produto</span>
+                            <small>Função preparada para URL futura</small>
+                        </div>
+                    </ng-template>
+                </div>
+
+                <div class="product-info">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.description }}</p>
+                    <strong>{{ product.price | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</strong>
+                </div>
+            </article>
+        </section>
+    </section>
+</section>

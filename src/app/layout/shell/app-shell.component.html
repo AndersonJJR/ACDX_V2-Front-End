@@ -1,0 +1,31 @@
+<!-- src/app/layout/shell/app-shell.component.html -->
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">X</div>
+    <div>
+      <strong>ACDX</strong>
+      <span>Systems &amp; Management</span>
+    </div>
+  </div>
+
+  <nav class="main-nav">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/products" routerLinkActive="active">Produtos</a>
+    <a routerLink="/sales-dashboard" routerLinkActive="active">Vendas</a>
+    <a routerLink="/investments" routerLinkActive="active">Investimentos</a>
+    <a routerLink="/services" routerLinkActive="active">Serviços</a>
+  </nav>
+</header>
+
+<main class="page-content">
+  <router-outlet />
+</main>
+
+<footer class="footer">
+  <span>© 2026 ACDX Systems &amp; Management</span>
+  <div class="footer-links">
+    <a href="#">LinkedIn</a>
+    <a href="#">Suporte</a>
+    <a href="#">Contato</a>
+  </div>
+</footer>

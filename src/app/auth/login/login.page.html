@@ -1,0 +1,76 @@
+<!-- src/app/auth/login/login.page.html -->
+<div class="login-page">
+  <div class="login-card">
+    <div class="user-badge">👤</div>
+
+    <header class="card-header">
+      <div class="brand-mark">
+        <span class="brand-main">ACDX</span>
+        <span class="brand-sub">Systems &amp; Management</span>
+      </div>
+
+      <h1>Acessar sistema</h1>
+      <p>Entre com seu login e senha para continuar.</p>
+    </header>
+
+    <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
+      <label class="input-group">
+        <span class="input-icon">👤</span>
+        <input
+          type="text"
+          formControlName="login"
+          placeholder="Login"
+          autocomplete="username"
+        />
+      </label>
+
+      <small class="error" *ngIf="form.controls.login.touched && form.controls.login.invalid">
+        Informe um login válido.
+      </small>
+
+      <label class="input-group">
+        <span class="input-icon">🔒</span>
+        <input
+          [type]="showPassword() ? 'text' : 'password'"
+          formControlName="senha"
+          placeholder="Senha"
+          autocomplete="current-password"
+        />
+        <button
+          type="button"
+          class="ghost-button"
+          (click)="togglePassword()">
+          {{ showPassword() ? 'Ocultar' : 'Mostrar' }}
+        </button>
+      </label>
+
+      <small class="error" *ngIf="form.controls.senha.touched && form.controls.senha.invalid">
+        A senha deve ter ao menos 6 caracteres.
+      </small>
+
+      <div class="options-row">
+        <label class="remember-me">
+          <input type="checkbox" formControlName="rememberMe" />
+          <span>Lembrar-me</span>
+        </label>
+
+        <button type="button" class="link-button" (click)="forgotPassword()">
+          Esqueci minha senha
+        </button>
+      </div>
+
+      <button class="submit-button" type="submit" [disabled]="form.invalid || loading()">
+        {{ loading() ? 'Entrando...' : 'Login' }}
+      </button>
+
+      <p class="server-message" *ngIf="serverMessage()">
+        {{ serverMessage() }}
+      </p>
+    </form>
+
+    <div class="signup-prompt">
+      <span>Não possui conta?</span>
+      <a routerLink="/cadastro" class="signup-link">Criar conta</a>
+    </div>
+  </div>
+</div>
