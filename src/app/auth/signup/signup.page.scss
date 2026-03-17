@@ -8,36 +8,36 @@
   display: grid;
   place-items: center;
   padding: 24px;
+  background-image: url("/assets/background.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .signup-card {
-  width: min(100%, 460px);
-  background: var(--color-white);
+  width: min(100%, 440px);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 28px;
-  box-shadow: var(--shadow-main);
-  padding: 72px 32px 32px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  padding: 40px 32px 32px;
   position: relative;
 }
 
-.user-badge {
-  width: 92px;
-  height: 92px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-blue), var(--color-navy));
-  color: var(--color-white);
-  display: grid;
-  place-items: center;
-  font-size: 40px;
-  position: absolute;
-  top: -46px;
-  left: 50%;
-  transform: translateX(-50%);
-  box-shadow: 0 12px 28px rgba(19, 45, 75, 0.28);
+.brand-mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  padding: 8px;
 }
 
 .card-header {
-  background: var(--color-navy);
-  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.35);
+  color: #132D4B;
   border-radius: 20px;
   padding: 24px 20px;
   margin-bottom: 24px;
@@ -51,25 +51,22 @@
 
 .card-header p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.82);
+  color: #132D4B;
 }
 
 .brand-mark {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  padding: 8px;
 }
 
-.brand-main {
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-}
-
-.brand-sub {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  color: #cfd8e6;
+.header-logo {
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
 }
 
 .signup-form {
@@ -89,12 +86,19 @@
 }
 
 .input-icon {
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   background: linear-gradient(180deg, var(--color-blue), var(--color-cyan));
-  color: var(--color-white);
-  font-size: 1rem;
+  padding: 12px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* makes the icon white if it's black */
+  }
 }
 
 .input-group input {
@@ -178,6 +182,13 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
