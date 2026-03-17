@@ -1,13 +1,13 @@
 export interface LoginRequest {
-  login: string;
-  senha: string;
-  rememberMe: boolean;
+  email: string;
+  password: string;
 }
 
 export interface LoginResponse {
-  token: string;
-  type: string;
-  expiresIn?: number;
+  authenticationToken: string;
+  refreshToken: string;
+  expiresAt: string;
+  username: string;
 }
 
 export interface SignupRequest {

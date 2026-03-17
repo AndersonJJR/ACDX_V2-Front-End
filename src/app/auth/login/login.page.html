@@ -17,22 +17,22 @@
       <label class="input-group">
         <span class="input-icon">👤</span>
         <input
-          type="text"
-          formControlName="login"
-          placeholder="Login"
-          autocomplete="username"
+          type="email"
+          formControlName="email"
+          placeholder="Email"
+          autocomplete="email"
         />
       </label>
 
-      <small class="error" *ngIf="form.controls.login.touched && form.controls.login.invalid">
-        Informe um login válido.
+      <small class="error" *ngIf="form.controls.email.touched && form.controls.email.invalid">
+        Informe um email válido.
       </small>
 
       <label class="input-group">
         <span class="input-icon">🔒</span>
         <input
           [type]="showPassword() ? 'text' : 'password'"
-          formControlName="senha"
+          formControlName="password"
           placeholder="Senha"
           autocomplete="current-password"
         />
@@ -44,16 +44,11 @@
         </button>
       </label>
 
-      <small class="error" *ngIf="form.controls.senha.touched && form.controls.senha.invalid">
+      <small class="error" *ngIf="form.controls.password.touched && form.controls.password.invalid">
         A senha deve ter ao menos 6 caracteres.
       </small>
 
       <div class="options-row">
-        <label class="remember-me">
-          <input type="checkbox" formControlName="rememberMe" />
-          <span>Lembrar-me</span>
-        </label>
-
         <button type="button" class="link-button" (click)="forgotPassword()">
           Esqueci minha senha
         </button>
@@ -63,7 +58,11 @@
         {{ loading() ? 'Entrando...' : 'Login' }}
       </button>
 
-      <p class="server-message" *ngIf="serverMessage()">
+      <p
+        class="server-message"
+        [ngClass]="{ 'success-message': !isError(), 'error-message': isError() }"
+        *ngIf="serverMessage()"
+      >
         {{ serverMessage() }}
       </p>
     </form>

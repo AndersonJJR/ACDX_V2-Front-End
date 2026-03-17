@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_BASE_URL } from './api-base-url.token';
-import { LoginRequest, LoginResponse, SignupRequest, SignupResponse } from '../../models/auth.models';
+import { LoginRequest, LoginResponse, SignupRequest } from '../../models/auth.models';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,15 @@ export class AuthApiService {
     return this.http.post<LoginResponse>(`${this.baseUrl}/auth/login`, payload);
   }
 
-  signup(payload: SignupRequest): Observable<SignupResponse> {
-    return this.http.post<SignupResponse>(`${this.baseUrl}/auth/signup`, payload);
+  signup(payload: SignupRequest): Observable<string> {
+    return this.http.post(`${this.baseUrl}/auth/signup`, payload, {
+      responseType: 'text',
+    });
+  }
+
+  logout(refreshToken: string): Observable<string> {
+    return this.http.post(`${this.baseUrl}/auth/logout`, { refreshToken, username: '' }, {
+      responseType: 'text',
+    });
   }
 }

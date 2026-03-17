@@ -173,9 +173,27 @@
 }
 
 .server-message {
-  margin: 8px 0 0;
+  margin: 12px 0 0;
   color: var(--color-gray);
   font-size: 0.92rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.success-message {
+  color: #27ae60;
+  background: rgba(39, 174, 96, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(39, 174, 96, 0.2);
+}
+
+.error-message {
+  color: #c0392b;
+  background: rgba(192, 57, 43, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(192, 57, 43, 0.2);
 }
 
 .signup-prompt {

@@ -55,7 +55,11 @@
         {{ loading() ? 'Cadastrando...' : 'Cadastrar' }}
       </button>
 
-      <p class="server-message" *ngIf="serverMessage()">
+      <p
+        class="server-message"
+        [ngClass]="{ 'success-message': signupSuccess(), 'error-message': !signupSuccess() }"
+        *ngIf="serverMessage()"
+      >
         {{ serverMessage() }}
       </p>
     </form>
