@@ -1,5 +1,5 @@
-// src/app/features/products/data/products.service.ts
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { MOCK_PRODUCTS, PRODUCT_CATEGORIES } from './products.mock';
 import { ProductCategory, ProductItem } from '../data/product.model';
@@ -8,12 +8,18 @@ import { ProductCategory, ProductItem } from '../data/product.model';
     providedIn: 'root',
 })
 export class ProductsService {
+    private readonly http = inject(HttpClient);
+
     getCategories(): Observable<ProductCategory[]> {
         return of(PRODUCT_CATEGORIES);
     }
 
     getProducts(): Observable<ProductItem[]> {
         return of(MOCK_PRODUCTS);
+    }
+
+    cadastrarProduto(produto: any): Observable<any> {
+        return this.http.post('http://localhost:8080/api/v1/products/cadastrar', produto);
     }
 
     // FUTURA IMPLEMENTAÇÃO:

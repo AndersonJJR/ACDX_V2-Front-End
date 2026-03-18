@@ -22,7 +22,7 @@
             </div>
 
             <div class="header-actions">
-                <button type="button" class="new-product-button" (click)="goToNewProduct()">
+                <button type="button" class="new-product-button" (click)="openNewProductModal()">
                     Novo produto
                 </button>
             </div>
@@ -60,3 +60,82 @@
         </section>
     </section>
 </section>
+
+<!-- Pop-up Novo Produto -->
+<div class="modal-overlay" *ngIf="isNewProductModalOpen()">
+    <div class="modal-container">
+        <header class="modal-header">
+            <div class="modal-title">
+                <!-- SVG Icon Filter representation -->
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                </svg>
+                <h3>Novo Produto</h3>
+            </div>
+            <button type="button" class="close-button" (click)="closeNewProductModal()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </header>
+
+        <form [formGroup]="newProductForm" (ngSubmit)="saveNewProduct()" class="modal-body">
+            
+            <div class="form-group">
+                <div class="form-group-header">
+                    <label for="nome">Nome</label>
+                </div>
+                <div class="input-container">
+                    <input id="nome" type="text" formControlName="nome" placeholder="Nome do produto" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group-header">
+                    <label for="categoria">Categoria</label>
+                </div>
+                <div class="input-container">
+                    <select id="categoria" formControlName="categoria">
+                        <option value="" disabled selected>Selecione uma categoria</option>
+                        <option *ngFor="let cat of formCategories" [value]="cat.value">{{ cat.label }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group half">
+                    <div class="form-group-header">
+                        <label for="custo_unitario">Custo Unitário (R$)</label>
+                    </div>
+                    <div class="input-container">
+                        <input id="custo_unitario" type="number" step="0.01" formControlName="custo_unitario" placeholder="0.00" />
+                    </div>
+                </div>
+
+                <div class="form-group half">
+                    <div class="form-group-header">
+                        <label for="tempo_producao_minutos">Tempo(min)</label>
+                    </div>
+                    <div class="input-container">
+                        <input id="tempo_producao_minutos" type="number" formControlName="tempo_producao_minutos" placeholder="0" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group-header">
+                    <label for="preco_sugerido">Preço Sugerido (R$)</label>
+                </div>
+                <div class="input-container">
+                    <input id="preco_sugerido" type="number" step="0.01" formControlName="preco_sugerido" placeholder="0.00" />
+                </div>
+            </div>
+
+            <footer class="modal-footer">
+                <button type="button" class="btn-reset" (click)="closeNewProductModal()">Cancelar</button>
+                <button type="submit" class="btn-apply" [disabled]="!newProductForm.valid">Salvar</button>
+            </footer>
+        </form>
+    </div>
+</div>
