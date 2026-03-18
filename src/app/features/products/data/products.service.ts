@@ -15,11 +15,11 @@ export class ProductsService {
     }
 
     getProducts(): Observable<ProductItem[]> {
-        return of(MOCK_PRODUCTS);
+        return this.http.get<ProductItem[]>('http://localhost:8080/api/v1/products/listar');
     }
 
     cadastrarProduto(produto: any): Observable<any> {
-        return this.http.post('http://localhost:8080/api/v1/products/cadastrar', produto);
+        return this.http.post('http://localhost:8080/api/v1/products/cadastrar', produto, { responseType: 'text' });
     }
 
     // FUTURA IMPLEMENTAÇÃO:

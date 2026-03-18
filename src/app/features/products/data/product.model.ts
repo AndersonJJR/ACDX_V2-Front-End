@@ -5,11 +5,13 @@ export interface ProductCategory {
 }
 
 export interface ProductItem {
-  id: number;
-  name: string;
-  categoryId: string;
-  price: number;
-  description: string;
+  id?: number;
+  nome: string;
+  categoria: string;
+  custo_unitario: number;
+  descricao?: string;
+  tempo_producao_minutos?: number;
+  preco_sugerido?: number;
 
   // DEMONSTRAÇÃO:
   // Campo preparado para receber a URL da imagem do produto no futuro.

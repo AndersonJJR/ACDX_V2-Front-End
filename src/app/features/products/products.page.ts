@@ -2,7 +2,6 @@
 import { AsyncPipe, CommonModule, CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { combineLatest, map } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductsService } from './data/products.service';
@@ -33,6 +32,7 @@ export class ProductsPage {
   constructor() {
     this.newProductForm = this.fb.group({
       nome: ['', Validators.required],
+      descricao: [''],
       categoria: ['', Validators.required],
       custo_unitario: [null, [Validators.required, Validators.min(0)]],
       tempo_producao_minutos: [null, [Validators.required, Validators.min(0)]],
@@ -60,7 +60,7 @@ export class ProductsPage {
       return items;
     }
 
-    return items.filter((item) => item.categoryId === selected);
+    return items.filter((item) => item.categoria === selected);
   });
 
   protected selectCategory(categoryId: string): void {
