@@ -1,59 +1,207 @@
-# AcdxTeste
+<div align="center">
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.1.
+# 🚀 ACDX V2 — Front-end
 
-## Development server
+> Projeto de estudo e desenvolvimento de uma aplicação web Angular com Server-Side Rendering (SSR).
 
-To start a local development server, run:
+![Status](https://img.shields.io/badge/Status-Em%20Andamento-yellow?style=for-the-badge)
+![Estudo](https://img.shields.io/badge/Tipo-Estudo-blue?style=for-the-badge)
+
+---
+
+![Angular](https://img.shields.io/badge/Angular-21-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![RxJS](https://img.shields.io/badge/RxJS-7.8-B7178C?style=for-the-badge&logo=reactivex&logoColor=white)
+![SCSS](https://img.shields.io/badge/SCSS-Styles-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-SSR-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![NPM](https://img.shields.io/badge/npm-11.9.0-CB3837?style=for-the-badge&logo=npm&logoColor=white)
+
+</div>
+
+---
+
+## 📋 Sobre o Projeto
+
+Este repositório contém o **front-end** da aplicação **ACDX Teste**, desenvolvida com Angular 21 e suporte a **Server-Side Rendering (SSR)** utilizando `@angular/ssr` e Express. O projeto faz parte de um estudo prático de desenvolvimento full-stack, integrando uma interface moderna com uma API RESTful no back-end.
+
+O back-end da aplicação está disponível no seguinte repositório: [meu_projeto — Back-end](https://github.com/AndersonJJR/meu_projeto)
+
+---
+
+## ✅ Status do Projeto
+
+| Item       | Descrição                     |
+|------------|-------------------------------|
+| 📌 Tipo    | Estudo / Aprendizado          |
+| 🔄 Status  | EM ANDAMENTO                  |
+| 🗓️ Início  | 2025                          |
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+### Front-end
+
+| Tecnologia        | Versão   | Descrição                                    |
+|-------------------|----------|----------------------------------------------|
+| Angular           | ^21.2.0  | Framework principal para desenvolvimento SPA |
+| TypeScript        | ~5.9.2   | Superset tipado do JavaScript                |
+| RxJS              | ~7.8.0   | Programação reativa com Observables          |
+| SCSS              | —        | Pré-processador CSS para estilização         |
+| @angular/ssr      | ^21.2.1  | Server-Side Rendering com Angular            |
+| @angular/router   | ^21.2.0  | Roteamento entre páginas da aplicação        |
+| @angular/forms    | ^21.2.0  | Gerenciamento de formulários reativos        |
+
+### Servidor / SSR
+
+| Tecnologia | Versão  | Descrição                              |
+|------------|---------|----------------------------------------|
+| Express    | ^5.1.0  | Servidor HTTP para servir o SSR        |
+| Node.js    | —       | Ambiente de execução do servidor       |
+
+### Ferramentas de Desenvolvimento
+
+| Ferramenta   | Versão   | Descrição                                    |
+|--------------|----------|----------------------------------------------|
+| Angular CLI  | ^21.2.1  | Interface de linha de comando do Angular     |
+| Prettier     | ^3.8.1   | Formatador de código                         |
+| Vitest       | ^4.0.8   | Framework de testes unitários                |
+| npm          | 11.9.0   | Gerenciador de pacotes                       |
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+acdx-teste/
+├── src/
+│   ├── app/              # Módulos, componentes, serviços e rotas
+│   ├── assets/           # Arquivos estáticos (imagens, ícones, etc.)
+│   ├── styles.scss       # Estilos globais da aplicação
+│   ├── main.ts           # Ponto de entrada do client-side
+│   ├── main.server.ts    # Ponto de entrada do server-side (SSR)
+│   ├── server.ts         # Configuração do servidor Express (SSR)
+│   └── index.html        # Template HTML principal
+├── public/               # Arquivos públicos
+├── angular.json          # Configurações do Angular CLI
+├── tsconfig.json         # Configurações do TypeScript
+├── package.json          # Dependências do projeto
+└── README.md
+```
+
+---
+
+## ⚙️ Pré-requisitos
+
+Antes de começar, certifique-se de ter as seguintes ferramentas instaladas:
+
+- [Node.js](https://nodejs.org/) (versão LTS recomendada)
+- [npm](https://www.npmjs.com/) (v11+)
+- [Angular CLI](https://angular.io/cli) (v21+)
+
+---
+
+## 🚀 Como Executar o Projeto
+
+### 1. Clone o repositório
 
 ```bash
+git clone https://github.com/AndersonJJR/acdx-teste.git
+cd acdx-teste
+```
+
+### 2. Instale as dependências
+
+```bash
+npm install
+```
+
+### 3. Execute em modo de desenvolvimento
+
+```bash
+npm start
+# ou
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Acesse: [http://localhost:4200](http://localhost:4200)
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 4. Build de produção
 
 ```bash
-ng generate component component-name
+npm run build
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 5. Executar com SSR (Server-Side Rendering)
 
 ```bash
-ng generate --help
+npm run build
+npm run serve:ssr:acdx-teste
 ```
 
-## Building
-
-To build the project run:
+### 6. Executar testes
 
 ```bash
-ng build
+npm run test
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## 📸 Capturas de tela
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Fluxo da aplicação
 
-```bash
-ng test
-```
+<p align="center">
+  <img src="./assets/cadastro_um.png" alt="Tela 01 - Cadastro" width="30%" />
+  <img src="./assets/cadastro_dois.png" alt="Tela 02 - Cadastro efetuado" width="30%" />
+  <img src="./assets/ethereal.png" alt="Tela 03 - Email recebido" width="30%" />
+</p>
 
-## Running end-to-end tests
+<p align="center">
+  <img src="./assets/conta_vef.png" alt="Tela 04 - Conta Verificada" width="30%" />
+  <img src="./assets/login.png" alt="Tela 05 - Login" width="30%" />
+  <img src="./assets/home.png" alt="Tela 06 - Home" width="30%" />
+</p>
 
-For end-to-end (e2e) testing, run:
+<p align="center">
+  <img src="./assets/home_dois.png" alt="Tela 07 - Home" width="30%" />
+  <img src="./assets/produtos_um.png" alt="Tela 08 - Produtos" width="30%" />
+  <img src="./assets/produtos_inativo.png" alt="Tela 09 - Produtos Inativos" width="30%" />
+</p>
 
-```bash
-ng e2e
-```
+<p align="center">
+  <img src="./assets/cadastro_produto.png" alt="Tela 10 - Cadastro de Produtos" width="45%" />
+  <img src="./assets/att_produtos.png" alt="Tela 11 - Atualização de Produtos" width="45%" />
+</p>
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
-## Additional Resources
+## 🔗 Repositório Back-end
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Este projeto consome a API desenvolvida em Java Spring Boot disponível em:
+
+👉 [https://github.com/AndersonJJR/meu_projeto](https://github.com/AndersonJJR/meu_projeto)
+
+Certifique-se de que o back-end está rodando antes de iniciar o front-end em ambiente de desenvolvimento.
+
+---
+
+## 👤 Autor
+
+<div align="center">
+
+<!-- Substitua a URL abaixo pela sua imagem de perfil ou foto -->
+<img src="https://avatars.githubusercontent.com/u/206952189?v=4" width="100px" style="border-radius: 50%;" alt="Foto do autor"/>
+
+**Anderson JJR**
+
+[![GitHub](https://img.shields.io/badge/GitHub-AndersonJJR-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AndersonJJR)
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Anderson-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andersonchavesjunior/)
+
+</div>
+
+---
+
+<div align="center">
+  <p>Feito por Anderson Júnior</p>
+</div>
