@@ -37,9 +37,18 @@
 
         <section class="products-grid">
             <article class="product-card" *ngFor="let product of filteredProducts()" (click)="openProduct(product)">
+                <div class="product-image-area" *ngIf="hasProductImage(product)">
+                    <img [src]="getProductImageUrl(product)" [alt]="product.nome" />
+                </div>
+                <div class="product-image-area" *ngIf="!hasProductImage(product)">
+                    <div class="image-placeholder">
+                        <span>Sem Imagem</span>
+                    </div>
+                </div>
                 <div class="product-info">
                     <h3>{{ product.nome }}</h3>
                     <p>{{ product.descricao }}</p>
+                    <span class="inactive-badge" *ngIf="product.ativo === false">Inativo</span>
                 </div>
             </article>
         </section>
@@ -82,6 +91,15 @@
                 </div>
                 <div class="input-container">
                     <textarea id="descricao" formControlName="descricao" placeholder="Descrição do produto" rows="3"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group-header">
+                    <label for="imagem">Imagem do Produto (Opcional)</label>
+                </div>
+                <div class="input-container">
+                    <input id="imagem" type="file" (change)="onFileSelected($event)" accept="image/*" />
                 </div>
             </div>
 
@@ -131,5 +149,135 @@
                 <button type="submit" class="btn-apply" [disabled]="!newProductForm.valid">Salvar</button>
             </footer>
         </form>
+    </div>
+</div>
+
+<!-- Pop-up Editar Produto -->
+<div class="modal-overlay" *ngIf="isEditProductModalOpen()">
+    <div class="modal-container">
+        <header class="modal-header">
+            <div class="modal-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 20h9"></path>
+                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                </svg>
+                <h3>Detalhes do Produto</h3>
+            </div>
+            <button type="button" class="close-button" (click)="closeEditProductModal()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </header>
+
+        <form [formGroup]="editProductForm" (ngSubmit)="saveEditProduct()" class="modal-body">
+            
+            <div class="form-group">
+                <div class="form-group-header">
+                    <label for="edit_nome">Nome</label>
+                </div>
+                <div class="input-container">
+                    <input id="edit_nome" type="text" formControlName="nome" placeholder="Nome do produto" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group-header">
+                    <label for="edit_descricao">Descrição</label>
+                </div>
+                <div class="input-container">
+                    <textarea id="edit_descricao" formControlName="descricao" placeholder="Descrição do produto" rows="3"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group-header">
+                    <label for="edit_imagem">Nova Imagem do Produto (Opcional)</label>
+                </div>
+                <div class="input-container">
+                    <input id="edit_imagem" type="file" (change)="onEditFileSelected($event)" accept="image/*" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group-header">
+                    <label for="edit_categoria">Categoria</label>
+                </div>
+                <div class="input-container">
+                    <select id="edit_categoria" formControlName="categoria">
+                        <option value="" disabled>Selecione uma categoria</option>
+                        <option *ngFor="let cat of formCategories" [value]="cat.value">{{ cat.label }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group half">
+                    <div class="form-group-header">
+                        <label for="edit_custo_unitario">Custo Unitário (R$)</label>
+                    </div>
+                    <div class="input-container">
+                        <input id="edit_custo_unitario" type="number" step="0.01" formControlName="custo_unitario" placeholder="0.00" />
+                    </div>
+                </div>
+
+                <div class="form-group half">
+                    <div class="form-group-header">
+                        <label for="edit_tempo_producao_minutos">Tempo(min)</label>
+                    </div>
+                    <div class="input-container">
+                        <input id="edit_tempo_producao_minutos" type="number" formControlName="tempo_producao_minutos" placeholder="0" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group-header">
+                    <label for="edit_preco_sugerido">Preço Sugerido (R$)</label>
+                </div>
+                <div class="input-container">
+                    <input id="edit_preco_sugerido" type="number" step="0.01" formControlName="preco_sugerido" placeholder="0.00" />
+                </div>
+            </div>
+
+            <footer class="modal-footer modal-footer-between">
+                <div class="action-buttons">
+                    <button type="button" class="btn-warning" (click)="openConfirmModal('disable')">Desabilitar</button>
+                    <button type="button" class="btn-danger" (click)="openConfirmModal('delete')">Excluir</button>
+                </div>
+                <div class="action-buttons">
+                    <button type="button" class="btn-reset" (click)="closeEditProductModal()">Cancelar</button>
+                    <button type="submit" class="btn-apply" [disabled]="!editProductForm.valid">Salvar</button>
+                </div>
+            </footer>
+        </form>
+    </div>
+</div>
+
+<!-- Pop-up Confirmação -->
+<div class="modal-overlay" *ngIf="isConfirmModalOpen()">
+    <div class="modal-container modal-small">
+        <header class="modal-header">
+            <div class="modal-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e53e3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <h3 *ngIf="confirmActionType() === 'disable'">Confirmar Desabilitação</h3>
+                <h3 *ngIf="confirmActionType() === 'delete'">Confirmar Exclusão</h3>
+            </div>
+        </header>
+        
+        <div class="modal-body confirm-body">
+            <p *ngIf="confirmActionType() === 'disable'">Tem certeza de que deseja desabilitar este produto? Ele não aparecerá mais nas listagens ativas.</p>
+            <p *ngIf="confirmActionType() === 'delete'">Tem certeza de que deseja excluir este produto? <strong>Essa ação não poderá ser desfeita.</strong></p>
+        </div>
+
+        <footer class="modal-footer">
+            <button type="button" class="btn-reset" (click)="closeConfirmModal()">Cancelar</button>
+            <button type="button" class="btn-danger" (click)="confirmAction()">Sim, continuar</button>
+        </footer>
     </div>
 </div>

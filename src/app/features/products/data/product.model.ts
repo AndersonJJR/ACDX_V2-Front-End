@@ -14,7 +14,8 @@ export interface ProductItem {
   preco_sugerido?: number;
 
   // DEMONSTRAÇÃO:
-  // Campo preparado para receber a URL da imagem do produto no futuro.
-  // Exemplo real posterior: http://localhost:8080/api/files/products/1/image
-  imageUrl?: string | null;
+  // Campo que recebe a URL da imagem do produto no futuro.
+  // Exemplo real posterior: http://localhost:8080/api/v1/image/files/produto_1_foto.jpg
+  imagemUrl?: string | null;
+  ativo?: boolean;
 }
