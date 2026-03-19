@@ -1,4 +1,3 @@
-// src/app/auth/login/login.page.ts
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -63,14 +62,9 @@ export class LoginPage {
               'Não foi possível autenticar. Verifique suas credenciais ou se sua conta já foi verificada por email.'
             );
           } else {
-            this.serverMessage.set('Erro ao realizar login. Tente novamente mais tarde.');
+            this.serverMessage.set('Erro ao realizar login.');
           }
         },
       });
-  }
-
-  protected forgotPassword(): void {
-    this.serverMessage.set('Fluxo de recuperação de senha ainda não implementado.');
-    this.isError.set(true);
   }
 }

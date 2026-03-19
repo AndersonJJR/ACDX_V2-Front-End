@@ -1,4 +1,3 @@
-// src/app/features/products/products.page.ts
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';

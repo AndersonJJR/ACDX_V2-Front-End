@@ -1,4 +1,3 @@
-// src/app/features/products/data/products.mock.ts
 import { ProductCategory, ProductItem } from '../data/product.model';
 
 export const PRODUCT_CATEGORIES: ProductCategory[] = [
@@ -11,5 +10,4 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
 ];
 
 export const MOCK_PRODUCTS: ProductItem[] = [
-  // A lista agora é buscada no back-end. Mantendo variável apenas caso seja necessária nos testes.
 ];

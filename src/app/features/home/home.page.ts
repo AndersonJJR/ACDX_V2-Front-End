@@ -1,4 +1,3 @@
-// src/app/features/home/home.page.ts
 import { AsyncPipe, CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';

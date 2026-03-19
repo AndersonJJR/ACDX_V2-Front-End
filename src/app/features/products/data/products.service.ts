@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, forkJoin, map } from 'rxjs';
-import { MOCK_PRODUCTS, PRODUCT_CATEGORIES } from './products.mock';
+import { PRODUCT_CATEGORIES } from './products.mock';
 import { ProductCategory, ProductItem } from '../data/product.model';
 
 @Injectable({
@@ -44,9 +44,4 @@ export class ProductsService {
         formData.append('file', file);
         return this.http.post(`http://localhost:8080/api/v1/products/${productId}/imagem`, formData);
     }
-
-    // FUTURA IMPLEMENTAÇÃO:
-    // Método reservado para consulta individual do produto.
-    // Exemplo futuro esperado:
-    // getProductById(productId: number): Observable<ProductItem> { ... }
 }

@@ -1,4 +1,3 @@
-// src/app/auth/signup/signup.page.ts
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -56,8 +55,7 @@ export class SignupPage {
             email: '',
             password: '',
           });
-
-          // Redireciona para a tela de login após 5 segundos
+          
           setTimeout(() => {
             this.router.navigate(['/login']);
           }, 5000);
