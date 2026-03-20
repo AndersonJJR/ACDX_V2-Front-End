@@ -24,7 +24,7 @@
 
 Este repositório contém o **front-end** da aplicação **ACDX Teste**, desenvolvida com Angular 21 e suporte a **Server-Side Rendering (SSR)** utilizando `@angular/ssr` e Express. O projeto faz parte de um estudo prático de desenvolvimento full-stack, integrando uma interface moderna com uma API RESTful no back-end.
 
-O back-end da aplicação está disponível no seguinte repositório: [meu_projeto — Back-end](https://github.com/AndersonJJR/meu_projeto)
+O back-end da aplicação está disponível no seguinte repositório: [ACDX V2 — Back-end](https://github.com/AndersonJJR/ACDX_V2-Back-end)
 
 ---
 
@@ -34,7 +34,7 @@ O back-end da aplicação está disponível no seguinte repositório: [meu_proje
 |------------|-------------------------------|
 | 📌 Tipo    | Estudo / Aprendizado          |
 | 🔄 Status  | EM ANDAMENTO                  |
-| 🗓️ Início  | 2025                          |
+| 🗓️ Início  | 2026                          |
 
 ---
 
@@ -179,7 +179,7 @@ npm run test
 
 Este projeto consome a API desenvolvida em Java Spring Boot disponível em:
 
-👉 [https://github.com/AndersonJJR/meu_projeto](https://github.com/AndersonJJR/meu_projeto)
+👉 [https://github.com/AndersonJJR/ACDX V2-Back-end](https://github.com/AndersonJJR/ACDX_V2-Back-end)
 
 Certifique-se de que o back-end está rodando antes de iniciar o front-end em ambiente de desenvolvimento.
 
