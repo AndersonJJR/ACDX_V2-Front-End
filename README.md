@@ -189,7 +189,6 @@ Certifique-se de que o back-end está rodando antes de iniciar o front-end em am
 
 <div align="center">
 
-<!-- Substitua a URL abaixo pela sua imagem de perfil ou foto -->
 <img src="https://avatars.githubusercontent.com/u/206952189?v=4" width="100px" style="border-radius: 50%;" alt="Foto do autor"/>
 
 **Anderson JJR**
